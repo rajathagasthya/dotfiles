@@ -184,8 +184,10 @@ set colorcolumn=+1
 
 " Color scheme
 syntax on
-set background=dark
-colorscheme solarized
+if has("gui_running")
+  set background=dark
+  colorscheme solarized
+endif
 
 " Save when losing focus
 au FocusLost * :silent! wall

@@ -19,7 +19,6 @@ Bundle 'tpope/vim-commentary'
 Bundle 'valloric/youcompleteme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'wincent/command-t'
-" Bundle 'tpope/vim-commentary'
 "
 filetype plugin indent on
 "
@@ -40,7 +39,7 @@ augroup vimrc_autocmds
 
 " Airline setup
 set laststatus=2
-set guifont=Hack\ For\ Powerline\ 12
+set guifont=Menlo\ For\ Powerline\ 12
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
@@ -66,6 +65,7 @@ set guifont=Hack\ For\ Powerline\ 12
 
 " Activate NERDTree with F2
 map <F2> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['\.pyc$', '\.o$', '\~$']
 
 " Python-mode
 " Activate rope
@@ -207,7 +207,7 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Useful way to manage tabs
-map <leader>tn :tabnew<cr>
+map <leader>tn :tabnew
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 

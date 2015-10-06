@@ -20,3 +20,4 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+export FPP_EDITOR=vim

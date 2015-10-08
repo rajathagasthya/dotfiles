@@ -186,7 +186,14 @@ set colorcolumn=+1
 syntax on
 if has("gui_running")
   set background=dark
+  " let g:solarized_visibility = "high"
+  " let g:solarized_contrast = "high"
   colorscheme solarized
+endif
+
+" Enable mouse mode for scrolling
+if has("mouse")
+  set mouse=a
 endif
 
 " Save when losing focus

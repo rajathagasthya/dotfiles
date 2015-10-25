@@ -1,25 +1,26 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " " required! 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 "
 " " The bundles you install will be listed here
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'valloric/youcompleteme'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'wincent/command-t'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'klen/python-mode'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-commentary'
+Plugin 'valloric/youcompleteme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'wincent/command-t'
 "
+call vundle#end()
 filetype plugin indent on
 "
 " " The rest of your config follows here

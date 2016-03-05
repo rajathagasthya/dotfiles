@@ -9,8 +9,8 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "
 " " The bundles you install will be listed here
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'klen/python-mode'
@@ -18,7 +18,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'wincent/command-t'
+Plugin 'ctrlpvim/ctrlp.vim'
 "
 call vundle#end()
 filetype plugin indent on
@@ -40,7 +40,7 @@ augroup vimrc_autocmds
 
 " Airline setup
 set laststatus=2
-set guifont=Menlo\ For\ Powerline\ 12
+set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\:h12
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
@@ -59,6 +59,7 @@ set guifont=Menlo\ For\ Powerline\ 12
   let g:airline_symbols.paste = 'Þ'
   let g:airline_symbols.paste = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
+  let g:airline_theme='solarized'
   let g:airline_powerline_fonts = 1
   let g:Powerline_symbols = 'fancy'
   let g:Powerline_cache_enabled = 1
@@ -168,6 +169,7 @@ set title
 set linebreak
 set colorcolumn=+1
 set showmatch
+set noundofile
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
 " turn off search highlight
@@ -185,12 +187,8 @@ set colorcolumn=+1
 
 " Color scheme
 syntax on
-if has("gui_running")
-  set background=dark
-  " let g:solarized_visibility = "high"
-  " let g:solarized_contrast = "high"
-  colorscheme solarized
-endif
+set background=dark
+colorscheme solarized
 
 " Enable mouse mode for scrolling
 if has("mouse")
@@ -224,7 +222,7 @@ map <leader>tm :tabmove
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " easier moving of code blocks
-" Try to go into visual mode (v), thenselect several lines of code here and
+" Try to go into visual mode (v), then select several lines of code here and
 " then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation

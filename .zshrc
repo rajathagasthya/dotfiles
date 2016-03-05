@@ -86,3 +86,12 @@ source $ZSH/oh-my-zsh.sh
 #
 # The fuck alias
 eval $(thefuck --alias)
+
+# Alias vi to vim to avoid version conflicts with YCM plugin
+alias vi=vim
+alias python=ipython
+
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/venvprojects
+source /usr/local/bin/virtualenvwrapper.sh

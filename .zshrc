@@ -89,7 +89,6 @@ eval $(thefuck --alias)
 
 # Alias vi to vim to avoid version conflicts with YCM plugin
 alias vi=vim
-alias python=ipython
 
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs

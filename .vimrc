@@ -19,6 +19,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'heavenshell/vim-pydocstring'
 "
 call vundle#end()
 filetype plugin indent on
@@ -70,13 +71,8 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\.o$', '\~$']
 
 " Python-mode
-" Activate rope
 " Keys:
 " K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
 " <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
 " [[            Jump on previous class or function (normal, visual, operator modes)
 " ]]            Jump on next class or function (normal, visual, operator modes)
@@ -90,25 +86,12 @@ let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
 let g:pydoc = 'pydoc'
 
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-nnoremap <leader>L :PymodeLint<cr>
-
 " Support virtualenv
 let g:pymode_virtualenv = 1
 
 " Enable breakpoints plugin
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
@@ -119,6 +102,17 @@ let g:pymode_folding = 0
 " Gets rid of the preview buffer asap
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"YCM virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " Syntastic
 let g:syntastic_enable_signs = 1

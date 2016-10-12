@@ -94,3 +94,52 @@ alias vi=vim
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/venvprojects
 source /usr/local/bin/virtualenvwrapper.sh
+
+# Metacloud specific aliases
+
+# Set these according to whatever proxmox host and slot you use
+PROXMOX=proxmox16
+PASLAB=paslab016000
+
+
+# quick access via the axion ssh_config
+# ex: sshaxion mcp1
+alias sshaxion="ssh -F ~/.axion/ssh_config "
+
+
+# quick access to the proxmox host
+# ex: sshproxmox
+alias sshproxmox="ssh ${PROXMOX}.lab1.mc.metacloud.in"
+
+# easy access to the ssh forwarding tunnel
+# ex: open_tunnel
+function open_tunnel {
+    ssh -L 3128:$(sshaxion mcp1 cat /etc/hosts | grep mcp1 | cut -d' ' -f1):3128 ${PROXMOX}.lab1.mc.metacloud.in
+}
+
+# opens the horizon dashboard in your browser!
+# ex: open_dashboard
+function open_dashboard {
+    open -a "/Applications/Google Chrome.app" "https://$(sshaxion mcp1 cat /etc/hosts | grep dashboard | cut -d' ' -f2)"
+}
+
+# same as above, but points to the zabbix app
+# ex: open_zabbix
+function open_zabbix {
+    open "http://util1.${PASLAB}.mc.metacloud.in/zabbix/index.php"
+}
+# get the IP address to a VM
+# ex: get_ip mhv3
+# ex: get_ip util1
+function get_ip {
+    sshaxion mcp1 cat /etc/hosts | grep ${1} | cut -d' ' -f1
+}
+
+# See afplay --help for more info and /System/Library/Sounds for some sound
+# files
+# Examples:
+# notify ansible-playbook ...
+# notify sleep 5
+function notify {
+    $@; afplay /System/Library/Sounds/Glass.aiff -v 5
+}

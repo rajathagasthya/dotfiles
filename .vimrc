@@ -93,6 +93,10 @@ let g:pymode_virtualenv = 1
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
 
+" Disable syntax checking
+let g:pymode_syntax = 0
+let g:pymode_syntax_all = 0
+
 " Don't autofold code
 let g:pymode_folding = 0
 

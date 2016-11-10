@@ -8,7 +8,7 @@ set -e
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Create symlinks for rc files in home directory
-declare -a files=(".vimrc" ".tmux.conf" ".zshrc" ".gitconfig")
+declare -a files=(".vimrc" ".tmux.conf" ".zshrc" ".gitconfig" ".ideavimrc")
 
 for i in "${files[@]}"
 do

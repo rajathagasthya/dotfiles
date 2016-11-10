@@ -95,6 +95,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/venvprojects
 source /usr/local/bin/virtualenvwrapper.sh
 
+# Autoenv
+source $(brew --prefix autoenv)/activate.sh
+
 # Metacloud specific aliases
 
 # Set these according to whatever proxmox host and slot you use
@@ -142,4 +145,14 @@ function get_ip {
 # notify sleep 5
 function notify {
     $@; afplay /System/Library/Sounds/Glass.aiff -v 5
+}
+
+# Generic iTerm tmux alias to ssh to a server and enter a tmux session
+function sshtmux {
+    ssh ${1} -t "tmux -CC attach || tmux -CC"
+}
+
+# Axion iTerm tmux alias to ssh to a server and enter a tmux session
+function sshatmux {
+    sshaxion ${1} -t "tmux -CC attach || tmux -CC"
 }

@@ -94,6 +94,7 @@ let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
 
 " Disable syntax checking
+let g:pymode_lint = 0
 let g:pymode_syntax = 0
 let g:pymode_syntax_all = 0
 
@@ -106,7 +107,9 @@ let g:pymode_folding = 0
 " Gets rid of the preview buffer asap
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 
 "YCM virtualenv support
 py << EOF

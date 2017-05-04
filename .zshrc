@@ -54,7 +54,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/bin/jamf:/usr/local/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -84,8 +84,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-# The fuck alias
-eval $(thefuck --alias)
 
 # Alias vi to vim to avoid version conflicts with YCM plugin
 alias vi=vim
@@ -94,9 +92,6 @@ alias vi=vim
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/venvprojects
 source /usr/local/bin/virtualenvwrapper.sh
-
-# Autoenv
-source $(brew --prefix autoenv)/activate.sh
 
 # Metacloud specific aliases
 

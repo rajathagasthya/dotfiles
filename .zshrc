@@ -1,3 +1,6 @@
+# Initialize zsh completions
+fpath=(/usr/local/share/zsh-completions $fpath)
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rajagast/.oh-my-zsh
 

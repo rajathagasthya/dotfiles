@@ -227,3 +227,10 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " then press ``>`` several times.
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
+
+"during insert, kj escapes, `^ is so that the cursor doesn't move
+inoremap kj <Esc>`^
+"during insert, lkj escapes and saves
+inoremap lkj <Esc>`^:w<CR>
+"during insert, lkj escapes and saves and QUITS
+inoremap ;lkj <Esc>:wq<CR>

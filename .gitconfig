@@ -1,14 +1,14 @@
 [filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
 [user]
-	name = Rajath Agasthya
-	email = rajagast@cisco.com
+    name = Rajath Agasthya
+    email = rajagast@cisco.com
 [core]
-	autocrlf = input
-	safecrlf = true
-	editor = /usr/local/bin/vim
+    autocrlf = input
+    safecrlf = true
+    editor = /usr/local/bin/vim
 [alias]
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
@@ -18,14 +18,14 @@
   last = log -1 HEAD 
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
+    required = true
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+    clean = git lfs clean %f
+    smudge = git lfs smudge %f
+    required = true
 [gitreview]
-	username = rajagast
+    username = rajagast
 [color]
-	ui = always
+    ui = always

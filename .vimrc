@@ -233,4 +233,4 @@ inoremap kj <Esc>`^
 "during insert, lkj escapes and saves
 inoremap lkj <Esc>`^:w<CR>
 "during insert, lkj escapes and saves and QUITS
-inoremap ;lkj <Esc>:wq<CR>
+inoremap lkjh <Esc>:wq<CR>

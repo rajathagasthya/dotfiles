@@ -99,8 +99,9 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Metacloud specific aliases
 
 # Set these according to whatever proxmox host and slot you use
-PROXMOX=proxmox16
-PASLAB=paslab016000
+PROXMOX=proxmox10
+PASLAB=lab007000
+DOMAIN=proxprod1.dfj.io
 
 
 # quick access via the axion ssh_config
@@ -110,12 +111,12 @@ alias sshaxion="ssh -F ~/.axion/ssh_config "
 
 # quick access to the proxmox host
 # ex: sshproxmox
-alias sshproxmox="ssh ${PROXMOX}.lab1.mc.metacloud.in"
+alias sshproxmox="ssh ${PROXMOX}.prod1.lab.dfj.io"
 
 # easy access to the ssh forwarding tunnel
 # ex: open_tunnel
 function open_tunnel {
-    ssh -L 3128:$(sshaxion mcp1 cat /etc/hosts | grep mcp1 | cut -d' ' -f1):3128 ${PROXMOX}.lab1.mc.metacloud.in
+    ssh -L 3128:$(sshaxion mcp1 cat /etc/hosts | grep mcp1 | cut -d' ' -f1):3128 ${PROXMOX}.prod1.lab.dfj.io
 }
 
 # opens the horizon dashboard in your browser!
@@ -127,7 +128,7 @@ function open_dashboard {
 # same as above, but points to the zabbix app
 # ex: open_zabbix
 function open_zabbix {
-    open "http://util1.${PASLAB}.mc.metacloud.in/zabbix/index.php"
+    open "http://util1.${PASLAB}.${DOMAIN}/zabbix/index.php"
 }
 # get the IP address to a VM
 # ex: get_ip mhv3

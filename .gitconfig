@@ -4,7 +4,7 @@
     smudge = git media smudge %f
 [user]
     name = Rajath Agasthya
-    email = rajagast@cisco.com
+    email = rajathagasthya@gmail.com
 [core]
     autocrlf = input
     safecrlf = true
@@ -17,6 +17,12 @@
   pull = pull --rebase 
   last = log -1 HEAD 
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
+  change = codereview change
+  gofmt = codereview gofmt
+  mail = codereview mail
+  pending = codereview pending
+  submit = codereview submit
+  sync = codereview sync
 [filter "hawser"]
     clean = git hawser clean %f
     smudge = git hawser smudge %f

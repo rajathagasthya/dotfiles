@@ -20,6 +20,7 @@ Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'heavenshell/vim-pydocstring'
+Plugin 'fatih/vim-go'
 "
 call vundle#end()
 filetype plugin indent on

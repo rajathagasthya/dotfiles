@@ -58,6 +58,8 @@ plugins=(git)
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin"
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -155,3 +157,10 @@ function sshtmux {
 function sshatmux {
     sshaxion ${1} -t "tmux -CC attach || tmux -CC"
 }
+
+
+# Go paths
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+
+# [[ -s "/Users/rajagast/.gvm/scripts/gvm" ]] && source "/Users/rajagast/.gvm/scripts/gvm"

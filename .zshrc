@@ -8,8 +8,9 @@ export ZSH=/Users/rajagast/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 DEFAULT_USER="rajagast"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -59,10 +60,13 @@ plugins=(git)
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
-export PATH="$(brew --prefix)/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python@2/bin:/usr/local/opt/python@2/libexec/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+# Plugin configuration
+# export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -98,69 +102,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/venvprojects
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Metacloud specific aliases
-
-# Set these according to whatever proxmox host and slot you use
-PROXMOX=proxmox10
-PASLAB=lab007000
-DOMAIN=proxprod1.dfj.io
-
-
-# quick access via the axion ssh_config
-# ex: sshaxion mcp1
-alias sshaxion="ssh -F ~/.axion/ssh_config "
-
-
-# quick access to the proxmox host
-# ex: sshproxmox
-alias sshproxmox="ssh ${PROXMOX}.prod1.lab.dfj.io"
-
-# easy access to the ssh forwarding tunnel
-# ex: open_tunnel
-function open_tunnel {
-    ssh -L 3128:$(sshaxion mcp1 cat /etc/hosts | grep mcp1 | cut -d' ' -f1):3128 ${PROXMOX}.prod1.lab.dfj.io
-}
-
-# opens the horizon dashboard in your browser!
-# ex: open_dashboard
-function open_dashboard {
-    open -a "/Applications/Google Chrome.app" "https://$(sshaxion mcp1 cat /etc/hosts | grep dashboard | cut -d' ' -f2)"
-}
-
-# same as above, but points to the zabbix app
-# ex: open_zabbix
-function open_zabbix {
-    open "http://util1.${PASLAB}.${DOMAIN}/zabbix/index.php"
-}
-# get the IP address to a VM
-# ex: get_ip mhv3
-# ex: get_ip util1
-function get_ip {
-    sshaxion mcp1 cat /etc/hosts | grep ${1} | cut -d' ' -f1
-}
-
-# See afplay --help for more info and /System/Library/Sounds for some sound
-# files
-# Examples:
-# notify ansible-playbook ...
-# notify sleep 5
-function notify {
-    $@; afplay /System/Library/Sounds/Glass.aiff -v 5
-}
-
-# Generic iTerm tmux alias to ssh to a server and enter a tmux session
-function sshtmux {
-    ssh ${1} -t "tmux -CC attach || tmux -CC"
-}
-
-# Axion iTerm tmux alias to ssh to a server and enter a tmux session
-function sshatmux {
-    sshaxion ${1} -t "tmux -CC attach || tmux -CC"
-}
-
-
 # Go paths
 export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 
-# [[ -s "/Users/rajagast/.gvm/scripts/gvm" ]] && source "/Users/rajagast/.gvm/scripts/gvm"

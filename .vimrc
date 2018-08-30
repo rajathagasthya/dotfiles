@@ -71,6 +71,11 @@ set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\:h12
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\.o$', '\~$']
 
+" Workaround for https://github.com/vim/vim/issues/3117
+if has('python3')
+  silent! python3 1
+endif
+
 " Python-mode
 " Keys:
 " K             Show python docs
@@ -108,18 +113,19 @@ let g:pymode_folding = 0
 " Gets rid of the preview buffer asap
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>g :YcmCompleter GoTo<CR>
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>p :YcmCompleter GoTo<CR>
+nnoremap <leader>pd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>pf :YcmCompleter GoToDefinition<CR>
 
 "YCM virtualenv support
-py << EOF
+py3<< EOF
 import os
 import sys
 if 'VIRTUAL_ENV' in os.environ:
   project_base_dir = os.environ['VIRTUAL_ENV']
   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
+  exec(compile(open(activate_this, 'rb').read(), activate_this, 'exec'),
+    dict(__file__=activate_this))
 EOF
 
 " Syntastic
@@ -222,6 +228,22 @@ map <leader>tm :tabmove
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Move between tabs
+nnoremap <leader>th :tabprevious<CR>
+nnoremap <leader>tl :tabnext<CR>
+
+" Go to tab by number
+noremap <leader>t1 1gt
+noremap <leader>t2 2gt
+noremap <leader>t3 3gt
+noremap <leader>t4 4gt
+noremap <leader>t5 5gt
+noremap <leader>t6 6gt
+noremap <leader>t7 7gt
+noremap <leader>t8 8gt
+noremap <leader>t9 9gt
+noremap <leader>t0 :tablast<cr>
 
 " easier moving of code blocks
 " Try to go into visual mode (v), then select several lines of code here and

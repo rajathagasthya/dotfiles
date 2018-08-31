@@ -105,3 +105,5 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Go paths
 export GOPATH=$HOME/go
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -18,9 +18,12 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'fatih/vim-go'
+
+" Install fzf plugin and point to existing fzf binary
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
 "
 call vundle#end()
 filetype plugin indent on
@@ -257,3 +260,15 @@ inoremap kj <Esc>`^
 inoremap lkj <Esc>`^:w<CR>
 "during insert, lkj escapes and saves and QUITS
 inoremap lkjh <Esc>:wq<CR>
+
+" Map fzf to ctrl-p
+nnoremap <C-p> :Files<Cr>
+" Add rg capabilities with fzf to search for text
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+" Map rg command to ctrl-o
+nnoremap <C-f> :Rg<Cr>

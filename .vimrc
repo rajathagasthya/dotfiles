@@ -13,7 +13,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
-Plugin 'klen/python-mode'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
@@ -78,37 +77,6 @@ let NERDTreeIgnore=['\.pyc$', '\.o$', '\~$']
 if has('python3')
   silent! python3 1
 endif
-
-" Python-mode
-" Keys:
-" K             Show python docs
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-
-" Documentation
-let g:pymode_doc = 1 
-let g:pymode_doc_key = 'K'
-let g:pydoc = 'pydoc'
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-
-" Disable syntax checking
-let g:pymode_lint = 0
-let g:pymode_syntax = 0
-let g:pymode_syntax_all = 0
-
-" Don't autofold code
-let g:pymode_folding = 0
 
 " YouCompleteMe
 " YCM doesn't like homebrew python...

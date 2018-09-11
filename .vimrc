@@ -272,3 +272,8 @@ command! -bang -nargs=* Rg
   \   <bang>0)
 " Map rg command to ctrl-o
 nnoremap <C-f> :Rg<Cr>
+
+" vim-go configuration
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_fmt_command = "goimports"

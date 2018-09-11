@@ -112,7 +112,7 @@ let g:pymode_folding = 0
 
 " YouCompleteMe
 " YCM doesn't like homebrew python...
-" let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/local/opt/python@2/bin/python'
 " Gets rid of the preview buffer asap
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -135,9 +135,11 @@ EOF
 let g:syntastic_enable_signs = 1
 let g:syntastic_enable_baloon = 1
 let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_java_checkers = ['javac']
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_style_error_symbol = 'E>'
 let g:syntastic_style_warning_symbol = 'W>'
 let g:syntastic_mode_map = {

@@ -30,3 +30,6 @@ fi
 
 # Install vim plugins
 vim +PluginInstall +qall
+
+# Install tmux status bar theme
+git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack

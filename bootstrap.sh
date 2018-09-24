@@ -31,5 +31,8 @@ fi
 # Install vim plugins
 vim +PluginInstall +qall
 
-# Install tmux status bar theme
+# Tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Tmux status bar theme
 git clone https://github.com/jimeh/tmux-themepack.git ~/.tmux-themepack

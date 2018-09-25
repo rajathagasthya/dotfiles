@@ -19,6 +19,7 @@ Plugin 'valloric/youcompleteme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'heavenshell/vim-pydocstring'
 Plugin 'fatih/vim-go'
+Plugin 'tpope/vim-obsession'
 
 " Install fzf plugin and point to existing fzf binary
 set rtp+=/usr/local/opt/fzf

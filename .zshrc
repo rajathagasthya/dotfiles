@@ -103,7 +103,8 @@ export PROJECT_HOME=$HOME/venvprojects
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Go paths
-export GOPATH=$HOME/go
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$(go env GOPATH)/bin
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

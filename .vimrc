@@ -13,6 +13,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-commentary'
 Plugin 'valloric/youcompleteme'
@@ -81,13 +82,12 @@ endif
 
 " YouCompleteMe
 " YCM doesn't like homebrew python...
-let g:ycm_path_to_python_interpreter = '/usr/local/opt/python@2/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
 " Gets rid of the preview buffer asap
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_completion=1
-nnoremap <leader>p :YcmCompleter GoTo<CR>
-nnoremap <leader>pd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>pf :YcmCompleter GoToDefinition<CR>
+let g:ycm_complete_in_strings=0
+let g:ycm_collect_identifiers_from_comments_and_strings=0
 
 "YCM virtualenv support
 py3<< EOF
@@ -105,10 +105,8 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_enable_baloon = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_java_checkers = ['javac']
 let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
-let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+" let g:syntastic_go_checkers = ['golint', 'govet']
 let g:syntastic_style_error_symbol = 'E>'
 let g:syntastic_style_warning_symbol = 'W>'
 let g:syntastic_mode_map = {
@@ -225,13 +223,6 @@ noremap <leader>0 :tablast<cr>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-"during insert, kj escapes, `^ is so that the cursor doesn't move
-inoremap kj <Esc>`^
-"during insert, lkj escapes and saves
-inoremap lkj <Esc>`^:w<CR>
-"during insert, lkj escapes and saves and QUITS
-inoremap lkjh <Esc>:wq<CR>
-
 " Map fzf to ctrl-p
 nnoremap <C-p> :Files<Cr>
 " Add rg capabilities with fzf to search for text
@@ -250,3 +241,6 @@ let g:go_highlight_functions = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_auto_type_info = 1
+let g:go_def_mode = 'gopls'
+let g:go_info_mode='gopls'
+let g:go_metalinter_command='golangci-lint'

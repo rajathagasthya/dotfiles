@@ -5,6 +5,8 @@
 [user]
     name = Rajath Agasthya
     email = rajathagasthya@gmail.com
+[includeif "gitdir:~/go/src/wwwin-github.cisco.com"]
+  path = ~/cisco.gitconfig
 [core]
     autocrlf = input
     safecrlf = true
@@ -14,7 +16,6 @@
   type = cat-file -t
   dump = cat-file -p
   unstage = reset HEAD 
-  pull = pull --rebase 
   last = log -1 HEAD 
   change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f "
   change = codereview change
@@ -35,3 +36,13 @@
     username = rajagast
 [color]
     ui = always
+[rerere]
+	enabled = true
+[pull]
+	rebase = true
+[hub]
+	host = wwwin-github.cisco.com
+[diff]
+	colorMoved = default
+[rebase]
+	autosquash = true

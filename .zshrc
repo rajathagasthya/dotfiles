@@ -1,3 +1,6 @@
+##### Time zsh loading #####
+# zmodload zsh/zprof
+
 # Initialize zsh completions
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -54,7 +57,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git kubectl)
 
 # User configuration
 
@@ -64,6 +67,9 @@ export PATH="/usr/local/opt/python@2/bin:/usr/local/opt/python@2/libexec/bin:$PA
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
+
+# Options to enable/disable after oh-my-zsh is loaded
+unsetopt share_history
 
 # Plugin configuration
 # export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
@@ -94,17 +100,34 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+# Use MacVim's vim
+alias vim='mvim -v'
 # Alias vi to vim to avoid version conflicts with YCM plugin
-alias vi=vim
+alias vi='mvim -v'
+# Alias rg to prevent search vendor dir
+alias rgv='rg -g "!vendor/*"'
+# Alias to copy ssh public key
+alias sshcopy='cat ~/.ssh/id_ed25519.pub | pbcopy'
 
 # Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/venvprojects
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=$HOME/.virtualenvs
+# export PROJECT_HOME=$HOME/venvprojects
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # Go paths
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 
-
+# FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# z - jump around
+. ~/z.sh
+
+##### Time zsh loading #####
+# zprof
+
+# Created by `userpath` on 2019-11-19 05:27:01
+export PATH="$PATH:/Users/rajagast/.local/bin"
+
+source /Users/rajagast/Library/Preferences/org.dystroy.broot/launcher/bash/br

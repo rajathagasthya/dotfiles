@@ -1,32 +1,35 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-" " required! 
-Plugin 'VundleVim/Vundle.vim'
-"
 " " The bundles you install will be listed here
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-commentary'
-Plugin 'valloric/youcompleteme'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'heavenshell/vim-pydocstring'
-Plugin 'fatih/vim-go'
-Plugin 'tpope/vim-obsession'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'altercation/vim-colors-solarized'
+Plug 'heavenshell/vim-pydocstring'
+Plug 'fatih/vim-go', { 'for': ['go'] }
+Plug 'tpope/vim-obsession'
+Plug 'nathangrigg/vim-beancount'
+Plug 'lambdalisue/vim-pyenv', { 'for': ['bean', 'beancount'] }
 
 " Install fzf plugin and point to existing fzf binary
-set rtp+=/usr/local/opt/fzf
-Plugin 'junegunn/fzf.vim'
+" set rtp+=/usr/local/opt/fzf
+Plug 'junegunn/fzf'
 "
-call vundle#end()
+" Initialize plugin system
+call plug#end()
 filetype plugin indent on
 "
 " " The rest of your config follows here
@@ -75,30 +78,28 @@ set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\:h12
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\.pyc$', '\.o$', '\~$']
 
-" Workaround for https://github.com/vim/vim/issues/3117
-if has('python3')
-  silent! python3 1
-endif
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
 " YouCompleteMe
 " YCM doesn't like homebrew python...
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+" let g:ycm_path_to_python_interpreter = '/Users/rajagast/.pyenv/shims/python'
 " Gets rid of the preview buffer asap
-let g:ycm_autoclose_preview_window_after_insertion=1
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_complete_in_strings=0
-let g:ycm_collect_identifiers_from_comments_and_strings=0
+" let g:ycm_autoclose_preview_window_after_insertion=1
+" let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_complete_in_strings=0
+" let g:ycm_collect_identifiers_from_comments_and_strings=0
 
 "YCM virtualenv support
-py3<< EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  exec(compile(open(activate_this, 'rb').read(), activate_this, 'exec'),
-    dict(__file__=activate_this))
-EOF
+" py3<< EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   exec(compile(open(activate_this, 'rb').read(), activate_this, 'exec'),
+"     dict(__file__=activate_this))
+" EOF
 
 " Syntastic
 let g:syntastic_enable_signs = 1
@@ -244,3 +245,4 @@ let g:go_auto_type_info = 1
 let g:go_def_mode = 'gopls'
 let g:go_info_mode='gopls'
 let g:go_metalinter_command='golangci-lint'
+

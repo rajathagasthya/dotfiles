@@ -5,12 +5,11 @@
 [user]
     name = Rajath Agasthya
     email = rajathagasthya@gmail.com
-[includeif "gitdir:~/go/src/wwwin-github.cisco.com"]
-  path = ~/cisco.gitconfig
 [core]
     autocrlf = input
     safecrlf = true
     editor = /usr/local/bin/vim
+    attributesfile = /Users/rajagast/.gitattributes
 [alias]
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
@@ -37,12 +36,11 @@
 [color]
     ui = always
 [rerere]
-	enabled = true
+    enabled = true
 [pull]
-	rebase = true
-[hub]
-	host = wwwin-github.cisco.com
+    rebase = true
 [diff]
-	colorMoved = default
+    colorMoved = default
 [rebase]
-	autosquash = true
+    autosquash = true
+

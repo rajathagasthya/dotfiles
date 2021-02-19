@@ -101,13 +101,13 @@ unsetopt share_history
 #
 
 # Use MacVim's vim
-alias vim='mvim -v'
+# alias vim='mvim -v'
 # Alias vi to vim to avoid version conflicts with YCM plugin
-alias vi='mvim -v'
+# alias vi='mvim -v'
 # Alias rg to prevent search vendor dir
 alias rgv='rg -g "!vendor/*"'
 # Alias to copy ssh public key
-alias sshcopy='cat ~/.ssh/id_ed25519.pub | pbcopy'
+alias sshcopy="echo -n $(cat ~/.ssh/id_ed25519.pub | rev | cut -d ' ' -f 2- | rev) | pbcopy"
 
 # Virtualenvwrapper
 # export WORKON_HOME=$HOME/.virtualenvs
@@ -126,8 +126,10 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 ##### Time zsh loading #####
 # zprof
+# alias python=/usr/local/opt/python3
+# alias pip=/usr/local/bin/pip3
+eval "$(pyenv init -)"
+export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
-# Created by `userpath` on 2019-11-19 05:27:01
-export PATH="$PATH:/Users/rajagast/.local/bin"
-
-source /Users/rajagast/Library/Preferences/org.dystroy.broot/launcher/bash/br
+alias sshccp="ssh -l ccpuser"
+export PATH="/usr/local/opt/ncurses/bin:$PATH"

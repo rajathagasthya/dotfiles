@@ -5,14 +5,14 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/rajagast/.oh-my-zsh
+export ZSH=/Users/ragasthya/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-DEFAULT_USER="rajagast"
+DEFAULT_USER="ragasthya"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -57,7 +57,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl)
+plugins=(git kubectl docker)
 
 # User configuration
 
@@ -105,7 +105,6 @@ unsetopt share_history
 # Alias vi to vim to avoid version conflicts with YCM plugin
 # alias vi='mvim -v'
 # Alias rg to prevent search vendor dir
-alias rgv='rg -g "!vendor/*"'
 # Alias to copy ssh public key
 alias sshcopy="echo -n $(cat ~/.ssh/id_ed25519.pub | rev | cut -d ' ' -f 2- | rev) | pbcopy"
 
@@ -131,5 +130,4 @@ export PATH=$PATH:$(go env GOPATH)/bin
 eval "$(pyenv init -)"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 
-alias sshccp="ssh -l ccpuser"
 export PATH="/usr/local/opt/ncurses/bin:$PATH"

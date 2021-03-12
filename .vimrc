@@ -25,9 +25,9 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'lambdalisue/vim-pyenv', { 'for': ['bean', 'beancount'] }
 Plug 'vimwiki/vimwiki'
 
-" Install fzf plugin and point to existing fzf binary
+" Install fzf plugin and point to existing homebrew fzf binary
 " set rtp+=/usr/local/opt/fzf
-Plug 'junegunn/fzf'
+Plug '/usr/local/opt/fzf'
 "
 " Initialize plugin system
 call plug#end()
@@ -226,15 +226,15 @@ vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
 " Map fzf to ctrl-p
-nnoremap <C-p> :Files<Cr>
+nnoremap <C-p> :FZF<Cr>
 " Add rg capabilities with fzf to search for text
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
-" Map rg command to ctrl-o
+" command! -bang -nargs=* Rg
+"   \ call fzf#vim#grep(
+"   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+"   \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"   \   <bang>0)
+" Map rg command to ctrl-f
 nnoremap <C-f> :Rg<Cr>
 
 " vim-go configuration

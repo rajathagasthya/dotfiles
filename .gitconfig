@@ -4,12 +4,12 @@
     smudge = git media smudge %f
 [user]
     name = Rajath Agasthya
-    email = rajathagasthya@gmail.com
+    email = ragasthya@vmware.com
 [core]
     autocrlf = input
     safecrlf = true
     editor = /usr/local/bin/vim
-    attributesfile = /Users/rajagast/.gitattributes
+    attributesfile = /Users/ragasthya/.gitattributes
 [alias]
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
@@ -23,14 +23,6 @@
   pending = codereview pending
   submit = codereview submit
   sync = codereview sync
-[filter "hawser"]
-    clean = git hawser clean %f
-    smudge = git hawser smudge %f
-    required = true
-[filter "lfs"]
-    clean = git lfs clean %f
-    smudge = git lfs smudge %f
-    required = true
 [gitreview]
     username = rajagast
 [color]
@@ -43,4 +35,5 @@
     colorMoved = default
 [rebase]
     autosquash = true
-
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/

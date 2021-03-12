@@ -23,6 +23,7 @@ Plug 'fatih/vim-go', { 'for': ['go'] }
 Plug 'tpope/vim-obsession'
 Plug 'nathangrigg/vim-beancount'
 Plug 'lambdalisue/vim-pyenv', { 'for': ['bean', 'beancount'] }
+Plug 'vimwiki/vimwiki'
 
 " Install fzf plugin and point to existing fzf binary
 " set rtp+=/usr/local/opt/fzf
@@ -245,4 +246,15 @@ let g:go_auto_type_info = 1
 let g:go_def_mode = 'gopls'
 let g:go_info_mode='gopls'
 let g:go_metalinter_command='golangci-lint'
+
+
+" vimwiki configuration
+let g:vimwiki_list = [{'path': '~/notes/vimwiki', 'path_html': '~/notes/vimwiki/public_html/',
+                     \ 'auto_export': 0, 'auto_toc': 1, 'syntax': 'markdown', 'ext': '.md',
+                     \ 'links_space_char': '_', 'auto_tags': 1, 'auto_diary_index': 1,
+                     \ 'auto_generate_links': 1, 'auto_generate_tags': 1, 'exclude_files': ['**/README.md'],
+                     \ 'diary_caption_level': -1}]
+let g:vimwiki_markdown_link_ext = 1
+" Create date file with a template
+au BufNewFile ~/notes/vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template.py '%'
 

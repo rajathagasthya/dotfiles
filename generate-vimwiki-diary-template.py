@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 import datetime
 import sys
 
@@ -21,6 +22,8 @@ template = """# {date}
 ## Discoveries
 
 ## Misc
+
+## Reflections
 """
 
 print(template.format(date=datetime.date.today().isoformat()))

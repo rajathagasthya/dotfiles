@@ -7,9 +7,10 @@
     email = ragasthya@vmware.com
 [core]
     autocrlf = input
-    safecrlf = true
+    safecrlf = warn
     editor = /usr/local/bin/vim
     attributesfile = /Users/ragasthya/.gitattributes
+    excludesfile = /Users/ragasthya/.gitignore
 [alias]
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
@@ -23,6 +24,8 @@
   pending = codereview pending
   submit = codereview submit
   sync = codereview sync
+  b = "!git branch -q -a --color=always | sed -e 's/^..//' -e '/->/d' | fzf --ansi --preview-window right:75% --preview 'git log -n $(( $( tput lines ) - 3 )) --color=always --pretty=reference {}' | xargs git switch"
+  ci = duet-commit
 [gitreview]
     username = rajagast
 [color]
@@ -37,3 +40,7 @@
     autosquash = true
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
+[commit]
+    gpgsign = true
+[init]
+    defaultBranch = main

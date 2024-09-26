@@ -57,7 +57,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl docker)
+plugins=(git kubectl docker kube-ps1)
 
 # User configuration
 
@@ -127,7 +127,64 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # zprof
 # alias python=/usr/local/opt/python3
 # alias pip=/usr/local/bin/pip3
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+# Load pyenv into the shell by adding
+# the following to ~/.zshrc:
+
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH="$(brew --prefix)/opt/libpq/bin:$PATH"
+
+#### FIG ENV VARIABLES ####
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
+
+# VMW DBC
+alias sshdbc='ssh ragasthya@sc-dbc2159.eng.vmware.com'
+
+export DOCKER_BUILDKIT=1
+
+alias -g y="-o yaml | yh"
+alias -g yl="-o yaml | yh | less"
+
+
+# Ignore interactive fzf mode
+# export KUBECTX_IGNORE_FZF=1
+
+# kube-ps1 plugin (enabled above) prompt
+PROMPT='$(kube_ps1) '$PROMPT
+# RPROMPT='$(kube_ps1)'
+
+# Direnv for zsh
+# Direnv requires loading after all the shell extensions that manipulate the prompt
+eval "$(direnv hook zsh)"
+
+# Kubectl Krew plugins
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# gcloud
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+# ruby
+source "$(brew --prefix)/opt/chruby/share/chruby/chruby.sh"
+source "$(brew --prefix)/opt/chruby/share/chruby/auto.sh"
+
+# ls colors
+alias ls="ls --color=auto"
+
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+

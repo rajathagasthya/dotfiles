@@ -24,6 +24,7 @@ Plug 'tpope/vim-obsession'
 Plug 'nathangrigg/vim-beancount'
 Plug 'lambdalisue/vim-pyenv', { 'for': ['bean', 'beancount'] }
 Plug 'vimwiki/vimwiki'
+Plug 'rust-lang/rust.vim'
 
 " Install fzf plugin and point to existing homebrew fzf binary
 " set rtp+=/usr/local/opt/fzf
@@ -163,7 +164,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set wrap
-set textwidth=80
+set textwidth=120
 set formatoptions=qrn1j
 set colorcolumn=+1
 
@@ -257,4 +258,7 @@ let g:vimwiki_list = [{'path': '~/notes/vimwiki', 'path_html': '~/notes/vimwiki/
 let g:vimwiki_markdown_link_ext = 1
 " Create date file with a template
 au BufNewFile ~/notes/vimwiki/diary/*.md :silent 0r !~/dotfiles/generate-vimwiki-diary-template.py '%'
+
+" rust.vim config
+let g:cargo_shell_command_runner = '!'
 

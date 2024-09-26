@@ -1,0 +1,8 @@
+# Global ignore files
+.idea
+**/.DS_Store
+
+# Direnv files
+.direnv
+.envrc
+

@@ -4,13 +4,15 @@
     smudge = git media smudge %f
 [user]
     name = Rajath Agasthya
-    email = ragasthya@vmware.com
+    email = rajathagasthya@gmail.com
 [core]
     autocrlf = input
     safecrlf = warn
-    editor = /usr/local/bin/vim
+    editor = vim
     attributesfile = /Users/ragasthya/.gitattributes
     excludesfile = /Users/ragasthya/.gitignore
+#    pager = delta
+    preloadIndex = true
 [alias]
   hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
   type = cat-file -t
@@ -38,9 +40,27 @@
     colorMoved = default
 [rebase]
     autosquash = true
+    autoStash = true
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 [commit]
     gpgsign = true
 [init]
     defaultBranch = main
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+[merge]
+    conflictStyle = zdiff3

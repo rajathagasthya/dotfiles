@@ -5,7 +5,7 @@
 fpath=(/usr/local/share/zsh-completions $fpath)
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/ragasthya/.oh-my-zsh
+export ZSH=/Users/ra000532/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -60,8 +60,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 plugins=(git kubectl docker kube-ps1)
 
 # User configuration
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:/usr/local/opt/python@2/libexec/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -100,13 +99,17 @@ unsetopt share_history
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+# Color for ls
+alias ls="ls --color=auto"
+
+
 # Use MacVim's vim
 # alias vim='mvim -v'
 # Alias vi to vim to avoid version conflicts with YCM plugin
 # alias vi='mvim -v'
 # Alias rg to prevent search vendor dir
 # Alias to copy ssh public key
-alias sshcopy="echo -n $(cat ~/.ssh/id_ed25519.pub | rev | cut -d ' ' -f 2- | rev) | pbcopy"
+alias sshcopy="echo -n $(cat ~/.ssh/id_ed25519.pub) | pbcopy"
 
 # Virtualenvwrapper
 # export WORKON_HOME=$HOME/.virtualenvs
@@ -118,7 +121,7 @@ export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
 
 # FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # z - jump around
 . ~/z.sh
@@ -137,8 +140,8 @@ eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix)/opt/make/libexec/gnubin:$PATH"
+export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 
 export PATH="/usr/local/opt/ncurses/bin:$PATH"
 
@@ -178,13 +181,33 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 # ruby
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
+
 source "$(brew --prefix)/opt/chruby/share/chruby/chruby.sh"
 source "$(brew --prefix)/opt/chruby/share/chruby/auto.sh"
 
-# ls colors
-alias ls="ls --color=auto"
 
-# jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+export GPG_TTY=$(tty)
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/ra000532/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/ra000532/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/ra000532/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/ra000532/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ra000532/.lmstudio/bin"
 
